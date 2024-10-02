@@ -39,4 +39,4 @@ def new_post():
     return redirect('/')
 
 if __name__ == '__main__':
-    
+    app.run("0.0.0.0")
