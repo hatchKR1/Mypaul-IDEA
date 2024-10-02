@@ -37,6 +37,3 @@ def new_post():
     user_ip = request.remote_addr
     save_post(content, user_ip)
     return redirect('/')
-
-if __name__ == '__main__':
-    app.run("0.0.0.0")
