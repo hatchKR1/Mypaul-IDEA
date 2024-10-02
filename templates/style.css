@@ -1,0 +1,4 @@
+@font-face {
+    font-family: 'NanumGothicRound';
+    src: url('{{ url_for('static', filename='fonts/NanumGothicRound.ttf') }}') format('truetype');
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이폴학교 IDEA</title>
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'DungGeunMo';
+            src: url('{{ url_for('static', filename='fonts/DungGeunMo.ttf') }}') format('truetype');
+        }
+
+        body {
+            font-family: 'DungGeunMo', sans-serif;
+            padding: 20px;
+            background-color: #f3f3f3;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .post {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="nes-text is-primary">익명 게시판</h1>
+    <h2 class="nes-text is-success">당신의 IP: {{request.remote_addr}}</h2>
+    <b class="nes-badge"><span class="is-warning">IDEA means 이데아</span></b>
+
+    <form action="/new" method="POST">
+        <div class="nes-field">
+            <textarea class="nes-textarea" name="content" rows="4" placeholder="여기에 글을 작성하세요..." required></textarea>
+        </div>
+        <button type="submit" class="nes-btn is-primary">글 작성</button>
+    </form>
+
+    <h2 class="nes-text is-error">글 목록</h2>
+    {% for post in posts %}
+        <div class="nes-container is-rounded post">
+            <p>{{ post.content }}</p>
+            <small>IP: {{ post.ip }} | 작성일: {{ post.date }}</small>
+        </div>
+    {% endfor %}
+</body>
+</html>
